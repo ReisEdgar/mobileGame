@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mario_Game_Edgar_Reis - Copy (5)", "Mario_Game_Edgar_Reis - Copy (5).csproj", "{EE826C8D-0915-DB6B-C1A8-812CCC9BB351}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE826C8D-0915-DB6B-C1A8-812CCC9BB351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE826C8D-0915-DB6B-C1A8-812CCC9BB351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE826C8D-0915-DB6B-C1A8-812CCC9BB351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE826C8D-0915-DB6B-C1A8-812CCC9BB351}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/W1_L1_OVERWORLD.unity
+  isLoaded: 1
+  isActive: 1
