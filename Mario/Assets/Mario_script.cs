@@ -125,6 +125,9 @@ public class Mario_script : MonoBehaviour
     float bubbleDelay;
 
 
+
+    bool fff;
+
     // Audio
     AudioSource audioSource;
     public AudioClip jump;
@@ -398,9 +401,19 @@ public class Mario_script : MonoBehaviour
             FlagDown();
 
         if (!freezeMovement)
-            if (MyButtons.ZDown && FireMario && canShoot)// Shoots FireBall
-                fireScript.Fire = true;
 
+            if (FireMario && canShoot)// Shoots FireBall
+            {
+                if (MyButtons.ZDown)
+                {
+                    fff = true;
+                }
+                if (fff && MyButtons.ZUp)
+                {
+                    fireScript.Fire = true;
+                    fff = false;
+                }
+            }
         Animations();
 
         if (!freezeMovement)
@@ -1051,6 +1064,18 @@ public class Mario_script : MonoBehaviour
     }
     }
 
+
+    public void Go()
+    {
+        
+        
+            Lives = LivesConst * 10;
+            SuperMario = true;
+            ResizeColliders();
+            FireMario = true;
+        
+    }
+
     // Cheking if Mario is grounded
     void GroundingCheck()
     {
@@ -1162,6 +1187,18 @@ public class Mario_script : MonoBehaviour
         Climb = false;
         Physics2D.IgnoreLayerCollision(MarioLayer, GroundLayer, false);
         MovingDown = false;
+        audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        edgeCollider = GetComponent<EdgeCollider2D>();
+        myAnimator = GetComponent<Animator>();
+        Mario = GetComponent<Rigidbody2D>();
+        Bubble = transform.Find("Bubble").GetComponent<Rigidbody2D>();
+        scoore = transform.Find("Scoore");
+        groundCheck = transform.Find("GroundCollision");
+        fireBall = transform.Find("FireBall");
+
+        groundCollisionEdge = groundCheck.GetComponent<EdgeCollider2D>();
         spriteRenderer.sortingLayerName = "Default";
         Mario.velocity = Vector2.zero;
         if (!GameControl.reloadGame)

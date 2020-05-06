@@ -88,6 +88,7 @@ public class GameControl : MonoBehaviour
     // because few levels start in a MultiLevel1 scene and only then move to a actual level.
     bool stop;
     public static bool EasyMode;
+    public  bool Easy;
     public bool gggg;
     public Highscore highscoore;
     // Use this for initialization
@@ -148,7 +149,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gggg = EasyMode;
+        EasyMode = Easy;
         crs = currentScene;
         pvs = previousScene;
         if (!GameStart)         // Menu allowing to chose single/multi player game

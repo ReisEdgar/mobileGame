@@ -227,7 +227,7 @@ public class AudioSource_script : MonoBehaviour
         }
         else
         {
-
+            audioSource = GetComponent<AudioSource>();
             SetBackgroundSong();
 
         }
@@ -274,6 +274,9 @@ public class AudioSource_script : MonoBehaviour
 
     void SetBackgroundSong()
     {
+        Debug.Log("------");
+        Debug.Log(audioSource == null);
+        Debug.Log(OverWorldMain);
         if (CurrentScene.name.Contains("OVERWORLD"))
             audioSource.clip = OverWorldMain;
         else if (CurrentScene.name.Contains("UNDERWORLD"))

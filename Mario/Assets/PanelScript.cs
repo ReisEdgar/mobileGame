@@ -34,10 +34,14 @@ public class PanelScript : MonoBehaviour
     public float panelY;
     public float panelZ;
     public LevelLoader LevelLoader;
-
+    public Mario_script mario_Script;
+    public GameControl gameControl_script;
+    bool init;
     // Start is called before the first frame update
     void Start()
     {
+        mario_Script = GameObject.Find("Mario").GetComponent<Mario_script>();
+        gameControl_script = GameObject.Find("Game controler").GetComponent<GameControl>();
         Menu = GameObject.Find("Menu component");
         Panel = GameObject.Find("Panel");
         Options = GameObject.Find("Options component");
@@ -67,7 +71,8 @@ public class PanelScript : MonoBehaviour
         OptionsButton.onClick.AddListener(ShowOptions);
         AboutButton.onClick.AddListener(ShowAbout);
         ExitButton.onClick.AddListener(CloseMenu);
-        EasyModeToggle.isOn = false;
+        var fff = gameControl_script.Easy;
+        init = true;
         EasyModeToggle.onValueChanged.AddListener(delegate {
             EasyModeSwtich();
         });
@@ -78,6 +83,10 @@ public class PanelScript : MonoBehaviour
         panelZ = Panel.transform.position.z;
 
           HidePanel();
+        gameControl_script.Easy = fff;
+        EasyModeToggle.isOn = fff;
+
+
     }
 
     private void LoadLevel()
@@ -304,7 +313,19 @@ public class PanelScript : MonoBehaviour
 
     public void EasyModeSwtich()
     {
-        GameControl.EasyMode = !GameControl.EasyMode;
+        if (!init)
+        {
+            Debug.Log("-----------------------------");
+            gameControl_script.Easy = !gameControl_script.Easy;
+            if (gameControl_script.Easy)
+            {
+                mario_Script.Go();
+            }
+        }
+        else
+        {
+            init = false;
+        }
     }
 
     public void OpenMenu()
@@ -374,5 +395,5 @@ public class PanelScript : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Instance = this;
         }
-    }
+     }
 }
